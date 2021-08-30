@@ -1,0 +1,13 @@
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:48:53 +0530] "GET / HTTP/1.1" 200 2157 http-bio-8080-exec-1 228
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:48:53 +0530] "GET /webjars/bootstrap/5.1.0/css/bootstrap.min.css HTTP/1.1" 304 - http-bio-8080-exec-3 41
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:48:53 +0530] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-8080-exec-4 6
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:10 +0530] "POST /login HTTP/1.1" 200 1566 http-bio-8080-exec-6 897
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:10 +0530] "GET /webjars/bootstrap/5.1.0/js/bootstrap.min.js HTTP/1.1" 304 - http-bio-8080-exec-8 12
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:12 +0530] "GET /todo-list HTTP/1.1" 200 2876 http-bio-8080-exec-9 169
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:14 +0530] "GET /todo-list HTTP/1.1" 200 2876 http-bio-8080-exec-10 18
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:16 +0530] "GET /todo-list HTTP/1.1" 200 2876 http-bio-8080-exec-10 13
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:19 +0530] "GET /todo-list HTTP/1.1" 200 2876 http-bio-8080-exec-4 16
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:25 +0530] "GET /update-todo?id=1 HTTP/1.1" 200 2594 http-bio-8080-exec-4 406
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:26 +0530] "POST /update-todo HTTP/1.1" 302 - http-bio-8080-exec-4 16
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:26 +0530] "GET /todo-list?name=ansar HTTP/1.1" 200 2876 http-bio-8080-exec-8 10
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:14:49:31 +0530] "GET /todo-list HTTP/1.1" 200 2876 http-bio-8080-exec-1 15

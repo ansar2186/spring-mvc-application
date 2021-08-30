@@ -85,7 +85,7 @@ public class TodoController {
 	public String deleteTodo(@RequestParam("id") int id,
 			ModelMap model){
 
-		System.out.println("ID------" +id);
+		System.out.println("Getting ID------" +id);
 
 		service.deleteTodo(id);		
 
