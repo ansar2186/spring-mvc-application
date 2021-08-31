@@ -4,20 +4,25 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.java.exception.ExceptionController;
 import com.java.model.Todo;
 import com.java.service.TodoService;
 
@@ -29,12 +34,22 @@ public class TodoController {
 	@Autowired
 	private TodoService  service;
 
+	private Log logger = LogFactory.getLog(ExceptionController.class);
+
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				dateFormat, false));
+	}
+	
+	
+	@RequestMapping("/home")
+	public String showHomePage() {
+		
+		return "Welcome";
+		
 	}
 
 
@@ -55,8 +70,10 @@ public class TodoController {
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String showAddTodoPage(ModelMap model){
+		
+		//throw new RuntimeException("Dummy Exception");
 
-		//model.put("list", service.retrieveTodos("ansar"));
+		model.put("list", service.retrieveTodos("ansar"));
 		model.addAttribute("todo", new Todo());
 
 		return "add-todo";
@@ -93,7 +110,6 @@ public class TodoController {
 
 	}
 
-
 	@RequestMapping(value = "/update-todo", method = RequestMethod.GET)
 	public String showUpdateTodo(@RequestParam("id") int id,
 			ModelMap model){
@@ -101,8 +117,6 @@ public class TodoController {
 		System.out.println("ID------" +id);
 		Todo todoById = service.getTodoById(id);
 		model.addAttribute("todo", todoById);
-
-
 
 		return "update-todo";
 
@@ -124,9 +138,17 @@ public class TodoController {
 
 		//model.addAttribute("list", todoById);
 
-
-
 		return "redirect:todo-list";
+
+	}
+	
+	
+	@ExceptionHandler(Exception.class)
+	public String handleException(HttpServletRequest request, Exception exception) {
+
+		logger.error("Request: " + request.getRequestURL() + " raised " + exception);
+
+		return "error-specific";
 
 	}
 
